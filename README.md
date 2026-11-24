@@ -1,5 +1,7 @@
 # Deploy and Host Stirling PDF with Railway
 
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/stirling-pdf-3-self-hosted-pdf-toolkit?referralCode=20H68q)
+
 Stirling PDF is a self-hosted PDF toolkit with more than 50 tools: merge, split, compress, OCR, convert to and from Office and images, sign, redact, watermark and more, in a web interface or through a REST API. This template runs Stirling PDF 3.5 with login switched on and a generated admin password.
 
 > Community template, not affiliated with Stirling PDF Inc.
