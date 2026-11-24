@@ -60,7 +60,7 @@ Stirling PDF is open-core. The PDF tools are MIT-licensed; login, user managemen
 
 **Resources**
 
-Measured on Railway: about 0.6 GB RAM idle after start-up, with short CPU bursts while a tool runs; OCR and Office conversions of large files temporarily need more memory. A Trial plan (1 GB) works for light use; Hobby is recommended for OCR of large scans and several users. The JVM heap is sized from the service memory limit automatically.
+Measured on Railway: about 0.9 GB RAM idle with a large memory limit (the JVM heap is sized from the service limit automatically). Under a 1 GB limit (Trial plan) it starts in about 30 seconds and merge, compress, OCR and Office conversion of small files work, using up to the full 1 GB; Hobby is recommended for OCR of large scans and several users.
 
 **Upgrading**: the image is pinned by digest in `services/stirling-pdf/Dockerfile` of the template repository. Change tag and digest to a newer release and redeploy; the database migrates on start. Read the release notes before major upgrades.
 

@@ -45,7 +45,7 @@ All are under the 4 GB build cap. RAM measured in the deploy test (see report).
 
 ## Resource profile
 
-Measured values in the report. Estimate idle ~0.6 GB ($6/month), bursts during OCR/Office conversions. Minimum plan: Trial for light use; Hobby recommended.
+Measured 2026-11-24: idle 0.93 GB with the Hobby limit (~$9/month), 0.5-1.0 GB under a 1 GB Trial limit (all tested tools worked). Minimum plan: Trial for light use; Hobby recommended.
 
 ## Verification checklist
 
