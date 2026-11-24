@@ -1,0 +1,105 @@
+{
+  "name": "Stirling PDF 3 Self-Hosted PDF Toolkit",
+  "description": "50+ PDF tools in your browser: merge, split, OCR, convert, sign. Login on.",
+  "category": "Other",
+  "tags": [
+    "stirling-pdf",
+    "pdf",
+    "ocr",
+    "pdf-editor",
+    "document",
+    "merge",
+    "convert",
+    "self-hosted"
+  ],
+  "image": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/stirling-pdf.svg",
+  "upstream": {
+    "stirling-pdf": "Stirling-Tools/Stirling-PDF v3.5.0, image stirlingtools/stirling-pdf:3.5.0@sha256:f5a38801f2dd551c26d0089ee3ea48d86a565e3adb414cb31e974bc9562cb48a",
+    "checked": "2026-11-24"
+  },
+  "services": {
+    "Stirling PDF": {
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/stirling-pdf.svg",
+      "source": {
+        "repo": "baranberkay96/stirling-pdf-railway",
+        "rootDirectory": "/services/stirling-pdf"
+      },
+      "startCommand": null,
+      "preDeployCommand": null,
+      "healthcheckPath": "/api/v1/info/status",
+      "healthcheckTimeout": 900,
+      "restartPolicyType": "ALWAYS",
+      "numReplicas": 1,
+      "cronSchedule": null,
+      "publicDomain": true,
+      "targetPort": 8080,
+      "tcpProxy": null,
+      "volume": {
+        "mountPath": "/configs"
+      },
+      "variables": {
+        "PORT": {
+          "defaultValue": "8080",
+          "description": "HTTP port (public domain target and healthcheck).",
+          "required": true
+        },
+        "SECURITY_ENABLELOGIN": {
+          "defaultValue": "true",
+          "description": "Require login. Stays on while the service has a public domain.",
+          "required": true
+        },
+        "SECURITY_INITIALLOGIN_USERNAME": {
+          "defaultValue": "admin",
+          "description": "First admin user, created on the first boot only.",
+          "required": true
+        },
+        "SECURITY_INITIALLOGIN_PASSWORD": {
+          "defaultValue": "${{secret(24, \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\")}}",
+          "description": "First admin password, generated at deploy (12-128 characters). Change it later in Account settings.",
+          "required": true
+        },
+        "SECURITY_CUSTOMGLOBALAPIKEY": {
+          "defaultValue": "${{secret(40, \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\")}}",
+          "description": "API key for scripts (X-API-KEY header). At least 24 characters; empty disables it.",
+          "required": false
+        },
+        "SYSTEM_MAXFILESIZE": {
+          "defaultValue": "2000",
+          "description": "Largest upload in MB.",
+          "required": false
+        },
+        "SYSTEM_DEFAULTLOCALE": {
+          "defaultValue": "en-US",
+          "description": "Default interface language, e.g. en-US, de-DE, fr-FR, tr-TR.",
+          "required": false
+        },
+        "SYSTEM_GOOGLEVISIBILITY": {
+          "defaultValue": "false",
+          "description": "Let search engines index the login page.",
+          "required": false
+        },
+        "SERVER_FORWARDHEADERSSTRATEGY": {
+          "defaultValue": "NATIVE",
+          "description": "Trust Railway's proxy headers so links and redirects use https.",
+          "required": false
+        },
+        "SHOW_SURVEY": {
+          "defaultValue": "false",
+          "description": "Show the upstream feedback survey.",
+          "required": false
+        },
+        "JAVA_CUSTOM_OPTS": {
+          "defaultValue": "",
+          "description": "Optional extra JVM flags, e.g. -XX:MaxRAMPercentage=60. Heap is sized from the service memory limit by default.",
+          "required": false
+        },
+        "STIRLING_AOT_ENABLE": {
+          "defaultValue": "false",
+          "description": "Build a JVM AOT cache on first boot for faster restarts (uses extra CPU and RAM once).",
+          "required": false
+        }
+      }
+    }
+  },
+  "buckets": []
+}
